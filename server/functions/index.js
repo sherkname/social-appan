@@ -16,6 +16,17 @@ const firebaseConfig = require("../config");
 const firebase = require("firebase");
 firebase.initializeApp(firebaseConfig);
 
+// to deploy to heroku
+app.use(
+  express.static(path.join(__dirname, "/client/build"))
+);
+
+app.get("*", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "/client/build", "index.html")
+  );
+});
+
 // Screams
 const { getAllScreams } = require("./handles/screams/getAllScream");
 const {
