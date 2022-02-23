@@ -24,10 +24,6 @@ import useUserHandle from "./handle/user";
 const User = ({ data: { loading, screams }, getUserDataAction }) => {
   const { screamIdParam, profile } = useUserHandle(getUserDataAction);
 
-  console.log("User page");
-  console.log(screamIdParam);
-  console.log(profile);
-
   const exsistedScream = !screamIdParam
     ? screams.map((scream) => <Scream key={scream.screamId} scream={scream} />)
     : screams.map((scream) => {
